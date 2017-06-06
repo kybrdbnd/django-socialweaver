@@ -1,0 +1,212 @@
+{%extends 'base.html'%} {%load static%} {%block content%}
+<style>
+.carousel {
+    height: 400px !important;
+}
+
+.user_question_img {
+    display: inline-block;
+    float: right;
+}
+
+.user_image {
+    height: 30px !important;
+    margin-top: 9px;
+}
+
+.question_user_date {
+    position: relative;
+    top: -10px;
+    left: 7px
+}
+</style>
+<div class="carousel carousel-slider" data-indicators="true">
+    {% for image in company_images %}
+    <a class="carousel-item">
+        <img src="{{image.image.url}}" alt="">
+    </a>
+    {% endfor %}
+</div>
+<div id="company_extra">
+    <div id="company_like">
+        <span><a href="#!" onclick='addVote("like","{{company.id}}")'><i class="material-icons">thumb_up</i><span id="company_likes">{{company.total_likes}}</span></a>
+        </span>
+    </div>
+    <div id="company_dislike">
+        <span><a href="#!" onclick='addVote("dislike","{{company.id}}")'><i class="material-icons">thumb_down</i><span id="company_dislikes">{{company.total_dislikes}}</span></a>
+        </span>
+    </div>
+</div>
+<ul id="tabs-swipe-demo" class="tabs">
+    <li class="tab col s3"><a href="#details">Details</a></li>
+    <li class="tab col s3"><a href="#packages">Packages</a></li>
+    <li class="tab col s3"><a href="#questions">Question/Answers</a></li>
+    <li class="tab col s3"><a href="#reviews">Reviews</a></li>
+</ul>
+<div id="details" class="col m12">
+    <div class="row">
+        <div class="col m6">
+            <div class="col m12">
+                Name: {{company.name}}
+            </div>
+            <div class="col m12">
+                Description: {{company.description}}
+            </div>
+            <div class="col m12">
+                Address: {{company.address}}
+            </div>
+            <div class="col m12">
+                Highlights: {{company.highlights}}
+            </div>
+            <div class="col m12">
+                Established At: {{company.established_at}}
+            </div>
+        </div>
+        <div class="col m4">
+            <div class="col m12">
+                Website: {{company.website}}
+            </div>
+            <div class="col m12">
+                Email : {{company.email}}
+            </div>
+            <div class="col m12">
+                Mobile: {{company.mobile}}
+            </div>
+            <div class="col m12">
+                Categories: {%for category in company.categories.all%}
+                <div class="chip">
+                    {{category}}
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+        <div class="col m2">
+            Google Maps
+        </div>
+    </div>
+</div>
+<div id="packages" class="col m12">
+    <div class="row">
+        {% for package in packages%}
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{package.image.url}}">
+                    <span class="card-title">{{package.name}}</span>
+                </div>
+                <div class="card-content">
+                    <p>{{package.description}}</p>
+                    <p>{{package.price}}</p>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+<div id="questions" class="col m12">
+    <form id="questionform" action="{% url 'question_create' %}" method="POST">
+        {% csrf_token%}
+        <div class=row>
+            <div class="input-field col m8">
+                <div class="input-field col m8">
+                    {{Questionform.question}} {{Questionform.question.label_tag}}
+                </div>
+                <input type="hidden" name="company_pk" value="{{company.pk}}">
+            </div>
+            <div class="input-field col m4">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </form>
+    <ul class="collapsible popout" data-collapsible="accordion">
+        {% for question in question_answers%}
+        <li>
+            <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{question}}
+                <div class="user_question_img">
+                    <img class="circle responsive-img user_image" src="{{question.asked_by.profilemodel.profile_pic.url}}">
+                    <span class="question_user_date">{{question.asked_by}}
+                 {{question.created_at|date:"d, M Y"}}</span>
+                </div>
+            </div>
+            {%for answer in question.answers.all%}
+            <div class="collapsible-body">
+                {{answer.answer}}
+                <div class="user_question_img">
+                    <img class="circle responsive-img user_image" src="{{answer.given_by.profilemodel.profile_pic.url}}">
+                    <span>{{answer.given_by}} {{answer.updated_at|date:"d, M Y"}}</span>
+                </div>
+            </div>
+            {%endfor%}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div id="reviews" class="col m12">
+    <div class="row">
+        {% for review in reviews %}
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{review.image.url}}">
+                    <span class="card-title">{{review.title}}
+                    </span>
+                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">thumb_up</i></a>
+                </div>
+                <div class="card-content">
+                    <p>
+                        {{review.content}}
+                    </p>
+                    <p>
+                        {{review.given_by}}  {{review.created_at|date:"d, M Y"}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>{%endblock%} {%block extra_js%}
+<script>
+$(document).ready(function() {
+    $('ul.tabs').tabs({
+        swipeable: true,
+        responsiveThreshold: true
+    });
+    $('.carousel.carousel-slider').carousel({
+        fullWidth: true
+    });
+    $('.collapsible').collapsible();
+
+
+});
+
+function addVote(work, company_id) {
+    console.log(work, company_id)
+    $.ajax({
+        type: 'POST',
+        url: "{% url 'like' %}",
+        data: {
+            'work': work,
+            'company_id': company_id,
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+        },
+        dataType: "json",
+        success: function(response) {
+            $('#company_likes').html(response.likes_count)
+            $('#company_dislikes').html(response.dislikes_count)
+            if (response.user_redirect) {
+                location.href = '/accounts/login/'
+            }
+            if (response.likes_success) {
+                Materialize.toast('Like Added!!', 4000, 'rounded')
+            }
+            if (response.dislikes_success) {
+                Materialize.toast('Dislike Added!!', 4000, 'rounded')
+            }
+        }
+    })
+
+}
+</script>
+{%endblock%}

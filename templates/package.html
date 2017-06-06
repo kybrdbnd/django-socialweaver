@@ -1,0 +1,100 @@
+{% extends 'vendor_base.html'%} {%load static%} {%block content%}
+<style>
+#packagemodal{
+    width: 901px;
+    min-height: 580px;
+    top: 4% !important;
+}
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a class="active" href="#packages">Packages</a></li>
+                <li class="tab col s3"><a target="_self" href="{% url 'company:event' %}">Events</a></li>
+            </ul>
+        </div>
+        <div id="packages" class="col s12">
+            {% if packages%}
+            <div class="row">
+                {% for package in packages%}
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img class="package_image" src="{{package.image.url}}">
+                            <span class="card-title">{{package.name}}</span>
+                        </div>
+                        <div class="card-content">
+                            <p>{{package.description}}</p>
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+            {%else%}
+            <h2>No Packages Found</h2> {%endif%}
+        </div>
+    </div>
+    <a href="#packagemodal" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+    <!-- Modal Structure -->
+    <div id="packagemodal" class="modal">
+        <div class="modal-content">
+            <form action="{% url 'company:package' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token%}
+                <div class="row">
+                    <div class="input-field col m12">
+                        {{Packageform.name}} {{Packageform.name.label_tag}}
+                    </div>
+                    <div class="input-field col m12">
+                        {{Packageform.description}} {{Packageform.description.label_tag}}
+                    </div>
+                    <div class="input-field col m6">
+                        {{Packageform.price}} {{Packageform.price.label_tag}}
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col m12">
+                        <label for="serves_to">Serves To:</label>
+                    </div>
+                    <div class="input-field col m4">
+                        {{Packageform.is_child}} {{Packageform.is_child.label_tag}}
+                    </div>
+                    <div class="input-field col m4">
+                        {{Packageform.is_parent}} {{Packageform.is_parent.label_tag}}
+                    </div>
+                    <div class="input-field col m4">
+                        {{Packageform.is_adult}} {{Packageform.is_adult.label_tag}}
+                    </div>
+                    <div class="input-field col m12">
+                        <label for="serve_type">Serve Type:</label>
+                        <br> {% for serve in Packageform.serves_type%} {{ serve.tag }}
+                        <label for="{{ serve.id_for_label }}">
+                            {{ serve.choice_label }}
+                        </label>
+                        {%endfor%}
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span class="white-text">Images</span> {{Packageform.image}}
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="Upload Package Image">
+                        </div>
+                    </div>
+                </div>
+                <button href="#!" class="modal-action waves-effect waves-green btn-flat">Agree
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%} {% block extra_js%}
+<script>
+$(document).ready(function() {
+    $('ul.tabs').tabs();
+    $('.modal').modal();
+    $('select').material_select();
+    $('#id_image').removeAttr('required');
+});
+</script>
+{%endblock%}

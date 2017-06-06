@@ -1,0 +1,40 @@
+<title>Create Your Profile</title>{% include 'css.html' %} {%include 'message.html'%}
+<div class="container">
+    <div class="row">
+        <div class="col s12 m10">
+            <div class="card-panel amber lighten-4">
+                <h4 class="center-align">Welcome {{user.profilemodel.full_name}}</h4>
+                <form action="/landing_steps/" method="POST">
+                    {{ form.non_field_errors }} {% csrf_token%}
+                    <div class="row">
+                        <div class="input-field col m6">
+                            {{form.username.errors}} {{form.username.label_tag}} {{form.username}}
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="input-field col m6">
+                            {{form.child.errors}} {{form.child.label_tag}} {{form.child}}
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="input-field col m6">
+                            <select multiple name="{{form.categories.name}}">
+                                <option value="" disabled selected>Choose your option</option>
+                                {% for category in form.categories%} {{category}} {%endfor%}
+                            </select>
+                            <label>Choose Your Categories</label>
+                        </div>
+                    </div>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'js.html'%} {% block extra_js %}
+<script>
+$(document).ready(function() {
+    $('select').material_select();
+});
+</script>
+{% endblock %}

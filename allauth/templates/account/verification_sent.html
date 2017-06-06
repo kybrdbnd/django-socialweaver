@@ -1,0 +1,21 @@
+ {%load static%}{%include 'css.html'%}{%include 'message.html'%} {% load i18n %}
+<title>{% trans "Verify Your E-mail Address" %}</title>
+<style>
+	#confirm_text{
+		margin-top: 200px;
+	}
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col m5">
+            <br>
+            <img src="{% static 'img/thank_you.png'%}" alt="">
+        </div>
+        <div class="col m7">
+            {% block content %}
+            <h4 id="confirm_text">Verify Your E-mail Address</h4>
+            <p>We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.</p>
+            {% endblock %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+{% extends 'vendor_base.html'%} {%load static%} {%block content%}
+<style>
+.pac-container {
+    z-index: 9999;
+}
+</style>
+<div class="container">
+    <a class="waves-effect waves-light btn" href="#googlecalendarmodal">Create Event</a>
+    <a class="waves-effect waves-light btn">Sync With Google Calendar</a>
+    <form action="/company/calendar/" method="POST">
+        <div id="googlecalendarmodal" class="modal">
+            <div class="modal-content">
+                {% csrf_token%} {{form.as_p}}
+            </div>
+            <div class="modal-footer">
+                <button href="#!" type="submit" class="modal-action waves-effect waves-green btn-flat">
+                    Agree
+                </button>
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
+    </form>
+</div>
+{%endblock%} {% block extra_js%}
+<script>
+$(document).ready(function() {
+    $('.modal').modal();
+    $("#id_location").geocomplete({
+        types: ["geocode", "establishment"]
+    });
+    $('.datepicker').pickadate({
+    	min: true
+    })
+    $('.timepicker').pickatime({
+    	min: true,
+        format: 'HH:i'
+    })
+});
+</script>
+{%endblock%}

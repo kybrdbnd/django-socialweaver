@@ -1,0 +1,51 @@
+{% extends 'vendor_base.html'%} {% load static%} {% block content%}
+<div class="container">
+    <ul class="collapsible popout" data-collapsible="accordion">
+        {% for question in questions%}
+        <li>
+            <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{question}}
+                <span>{{question.asked_by.get_full_name}}, {{question.created_at}}</span>
+            </div>
+            <div class="collapsible-body">
+                {% for answer in question.answers.all%}
+                <div>
+                    {{answer}}
+                    <span>{{answer.updated_at}}</span>
+                </div>
+                {% endfor %}
+                <a class="waves-effect waves-light btn" href='#modal1' data-question='{{question}}' data-questionid='{{question.id}}'>
+                    <i class="material-icons right">cloud</i>Answer</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal bottom-sheet">
+        <form action="{% url 'company:question' %}" method="POST">
+        	{% csrf_token %}
+            <div class="modal-content">
+                <h4 id="question_text"></h4> {{Answerform.answer.label_tag}}{{Answerform.answer}}
+                <input type="hidden" name="question_id" id="question_id"> 
+            </div>
+            <div class="modal-footer">
+                <button href="#!" class="modal-action waves-effect waves-green btn-flat">Agree</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %} {% block extra_js%}
+<script>
+$(document).ready(function() {
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal({
+        ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+            var question = trigger.data('question')
+            var question_id = trigger.data('questionid')
+            $('#question_text').html(question)
+            $('#question_id').val(question_id)
+            console.log(modal, trigger);
+        }
+    });
+});
+</script>
+{% endblock%}

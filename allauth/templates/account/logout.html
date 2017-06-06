@@ -1,0 +1,24 @@
+{%load static%}{%include 'css.html'%}
+<style>
+#logout_text {
+    margin-top: 200px;
+}
+</style>{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col m5">
+        <br>
+            <img src="{% static 'img/thank_you.png'%}" alt="">
+        </div>
+        <div class="input-field col m7">
+            <h4 id="logout_text">Are you sure you want to log out?</h4>
+            <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %} {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> {% endif %}
+                <button class="btn waves-effect waves-light" type="submit" name="action">Log Out
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

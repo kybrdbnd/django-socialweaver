@@ -1,0 +1,150 @@
+{% extends 'vendor_base.html'%} {%load static%}{% load thumbnail %} {%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs tabs-fixed-width">
+                <li class="tab col s3"><a href="#information">Information</a></li>
+                <li class="tab col s3"><a href="#profile">Profile</a></li>
+                <li class="tab col s3"><a href="#branches">Branches</a></li>
+                <li class="tab col s3"><a href="#highlights">Highlights</a></li>
+                <li class="tab col s3"><a href="#social">Social</a></li>
+            </ul>
+        </div>
+        <div id="information" class="col s12">
+            <form id="company_update" action="/company/profile/" method="POST">
+                {% csrf_token%}
+                <div class="row">
+                    <div class="input-field col m6">
+                        {{CompanyUpdateform.name}} {{CompanyUpdateform.name.label_tag}} {{CompanyUpdateform.name.errors}}
+                    </div>
+                    <div class="input-field col m6">
+                        {{CompanyUpdateform.mobile}} {{CompanyUpdateform.mobile.label_tag}} {{CompanyUpdateform.mobile.errors}}
+                    </div>
+                    <div class="input-field col m6">
+                        {{CompanyUpdateform.address}} {{CompanyUpdateform.address.label_tag}}
+                    </div>
+                    <div class="input-field col m6">
+                        {{CompanyUpdateform.website}} {{CompanyUpdateform.website.label_tag}}
+                    </div>
+                    <div class="input-field col m6">
+                        {{CompanyUpdateform.registration_no}} {{CompanyUpdateform.registration_no.label_tag}}
+                    </div>
+                    <div class="input-field col m6">
+                        {{CompanyUpdateform.established_at}} {{CompanyUpdateform.established_at.label_tag}}
+                    </div>
+                    <div class="input-field col m6">
+                        {{CompanyUpdateform.email}} {{CompanyUpdateform.email.label_tag}}
+                    </div>
+                    <div class="input-field col m6">
+                        {{CompanyUpdateform.is_whatsapp}} {{CompanyUpdateform.is_whatsapp.label_tag}}
+                    </div>
+                    <div class="input-field col m12">
+                         {{CompanyUpdateform.description}} {{CompanyUpdateform.description.label_tag}}
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light">Update
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+            <form action="/company/profile/" method="POST" enctype="multipart/form-data">
+                {% csrf_token%}
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span class="white-text">Images</span> {{CompanyImageform.image}}
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light">Upload
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+            <img id="img_id" src="" alt="your image" /> {% if company_images%} {% for image in company_images%}
+            <img src="{% thumbnail image.image 430x360 box=image.cropping crop detail %}"> {%endfor%} {% endif %}
+        </div>
+        <div id="profile" class="col s12">
+            <form action="/company/profile_pic/" method='POST' enctype="multipart/form-data">
+                {%csrf_token%}
+                <div class="row">
+                    <div class="input-field col m8">
+                        {{Profileform.first_name}} {{Profileform.first_name.label_tag}}
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="input-field col m8">
+                        {{Profileform.last_name}} {{Profileform.last_name.label_tag}}
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="input-field col m8">
+                        {{Profileform.phone_no}} {{Profileform.phone_no.label_tag}}
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span class="white-text">Photo</span> {{Profileform.profile_pic}}
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="Upload Your Profile Pic">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light">Update
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+        <div id="branches" class="col s12">Branches</div>
+        <div id="highlights" class="col s12">
+            <form action="/company/profile/" method="POST">
+                {%csrf_token%}
+                <div class="row">
+                    <div class="input-field col m12">
+                        {{CompanyHighlightform.highlights}} {{CompanyHighlightform.highlights.label_tag}}
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light">Update
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+        <div id="social" class="col s12">
+            <form action="/company/profile/" method="POST">
+                {% csrf_token%}
+                <div class="row">
+                    <div class="input-field col m12">
+                        {{CompanySocialform.facebook_link}} {{CompanySocialform.facebook_link.label_tag}} {{CompanySocialform.facebook_link.errors}}
+                    </div>
+                    <div class="input-field col m12">
+                        {{CompanySocialform.twitter_link}} {{CompanySocialform.twitter_link.label_tag}} {{CompanySocialform.twitter_link.errors}}
+                    </div>
+                    <div class="input-field col m12">
+                        {{CompanySocialform.instagram_link}} {{CompanySocialform.instagram_link.label_tag}} {{CompanySocialform.instagram_link.errors}}
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light">Update
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%} {%block extra_js%}
+<script>
+function Imagethumb(input) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        $('#img_id').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+}
+
+$(document).ready(function() {
+    $('#id_profile_pic').removeAttr('required');
+    $('ul.tabs').tabs();
+    $('.modal').modal();
+    $("#id_address").geocomplete({
+        types: ["geocode", "establishment"]
+    });
+});
+</script>
+{%endblock%}

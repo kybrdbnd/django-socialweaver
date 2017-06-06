@@ -1,0 +1,829 @@
+[
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "1",
+      "name": "Paediatrician",
+      "slug": "paediatrician"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "2",
+      "name": "GP",
+      "slug": "gp"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "3",
+      "name": "ENT",
+      "slug": "ent"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "4",
+      "name": "Dental health-Dentist",
+      "slug": "dental-health-dentist"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "5",
+      "name": "Orthodontist",
+      "slug": "orthodontist"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "6",
+      "name": "Counsellor",
+      "slug": "counsellor"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "7",
+      "name": "Psychologist",
+      "slug": "psychologist"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "8",
+      "name": "Psychiatrist",
+      "slug": "psychiatrist"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "9",
+      "name": "Therapy-Speech",
+      "slug": "therapy-speech"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "10",
+      "name": "Occupational",
+      "slug": "occupational"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "11",
+      "name": "Behavioral Specialists",
+      "slug": "behavioral-specialists"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "12",
+      "name": "Alternative healing-Homeopathy",
+      "slug": "alternative-healing-homeopathy"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "14",
+      "name": "Gynaecologist/Obs.",
+      "slug": "gynaecologist-obs"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "15",
+      "name": "Assisted conception-IVF",
+      "slug": "assisted-conception-ivf"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "16",
+      "name": "Fertility Clinic",
+      "slug": "fertility-clinic"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "17",
+      "name": "Adoption",
+      "slug": "adoption"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "18",
+      "name": "Hospital for delivery",
+      "slug": "hospital-for-delivery"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "19",
+      "name": "Pre natal fitness-yoga",
+      "slug": "pre-natal-fitness-yoga"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "20",
+      "name": "Pilates",
+      "slug": "pilates"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "21",
+      "name": "Prenatal classes-lamaze",
+      "slug": "prenatal-classes-lamaze"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "22",
+      "name": "Breathing",
+      "slug": "breathing"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "23",
+      "name": "Post Natal Massages",
+      "slug": "post-natal-massages"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "24",
+      "name": "Post Natal fitness-Weight Loss",
+      "slug": "post-natal-fitness-weight-loss"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "25",
+      "name": "Yoga",
+      "slug": "yoga"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "26",
+      "name": "Diet",
+      "slug": "diet"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "27",
+      "name": "Lactation Consultant",
+      "slug": "lactation-consultant"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "28",
+      "name": "Massage for babies",
+      "slug": "massage-for-babies"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "29",
+      "name": "Cord blood banking",
+      "slug": "cord-blood-banking"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "30",
+      "name": "Confinement nanny",
+      "slug": "confinement-nanny"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "31",
+      "name": "Confinement food",
+      "slug": "confinement-food"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "32",
+      "name": "Babysitter",
+      "slug": "babysitter"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "33",
+      "name": "Maid Agency",
+      "slug": "maid-agency"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "34",
+      "name": "Day Care",
+      "slug": "day-care"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "35",
+      "name": "Cleaning apps",
+      "slug": "cleaning-apps"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "36",
+      "name": "Cord blood banking",
+      "slug": "cord-blood-banking"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "37",
+      "name": "Buying baby stuff-online/ offline",
+      "slug": "buying-baby-stuff-online-offline"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "38",
+      "name": "Photographer-baby",
+      "slug": "photographer-baby"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "39",
+      "name": "Maternity",
+      "slug": "maternity"
+    }
+  },
+   {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "40",
+      "name": "Financial Consultant-insurance",
+      "slug": "financial-consultant-insurance"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "41",
+      "name": "Malls",
+      "slug": "malls"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "42",
+      "name": "Child Friendly Restaurants",
+      "slug": "child-frienddly-restaurants"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "43",
+      "name": "Parks",
+      "slug": "parks"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "44",
+      "name": "Playgrounds-Outdoors",
+      "slug": "playground-outdoors"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "45",
+      "name": "Indoor Play areas",
+      "slug": "indoor-play-areas"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "46",
+      "name": "Amusement parks",
+      "slug": "amusement-parks"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "47",
+      "name": "Museums",
+      "slug": "museums"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "48",
+      "name": "Libraries",
+      "slug": "libraries"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "49",
+      "name": "Kids' salon/ haircut/ ear piercing",
+      "slug": "kids-salon-haircut-ear-piercing"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "50",
+      "name": "Birthday Party planner",
+      "slug": "birthday-party-planner"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "51",
+      "name": "Birthday Party suppliers/ stores/ goody bags",
+      "slug": "birthday-party-suppliers-stores-goody-bags"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "52",
+      "name": "Birthday Party Entertainment",
+      "slug": "birthday-party-entertainment"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "53",
+      "name": "Birthday Party venues",
+      "slug": "birthday-party-venues"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "54",
+      "name": "Caterers",
+      "slug": "caterers"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "55",
+      "name": "Cake- bakers/ delivery/patisserie",
+      "slug": "cake-bakers-delivery-patisserie"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "56",
+      "name": "Home chefs",
+      "slug": "home-chefs"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "57",
+      "name": "Stationery",
+      "slug": "stationery"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "59",
+      "name": "Art and Craft",
+      "slug": "art-and-craft"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "60",
+      "name": "Toy stores",
+      "slug": "toy-stores"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "61",
+      "name": "Facilities-swimming",
+      "slug": "facilities-swimming"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "62",
+      "name": "Swimming coach/instructor",
+      "slug": "swimming-coach-instructor"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "63",
+      "name": "Martial arts Academy/Instructor",
+      "slug": "martial-arts-academy-instructor"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "64",
+      "name": "Dance Academy/Instructor",
+      "slug": "dance-academy-instructor"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "65",
+      "name": "Art/ Painting class/teacher",
+      "slug": "art-painting-class-teacher"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "66",
+      "name": "Music Academy/teacher",
+      "slug": "music-academy-teacher"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "67",
+      "name": "Yoga class/teacher",
+      "slug": "yoga-class-teacher"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "68",
+      "name": "Coach-tennis,badminton",
+      "slug": "coach-tennis-badminton"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "69",
+      "name": "Academy-football,cricket",
+      "slug": "academy-football-cricket"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "70",
+      "name": "Book stores",
+      "slug": "book-stores"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "71",
+      "name": "Language class/ teacher",
+      "slug": "language-class-teacher"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "72",
+      "name": "Maths class/ tutor",
+      "slug": "maths-class-tutor"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "73",
+      "name": "Enrichment centres",
+      "slug": "enrichment-centres"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "74",
+      "name": "Career counsellor",
+      "slug": "career-counsellor"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "75",
+      "name": "Playgroup/ pre-school",
+      "slug": "playgroup-pre-school"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "76",
+      "name": "International school",
+      "slug": "international-school"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "77",
+      "name": "Public school",
+      "slug": "public-school"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "78",
+      "name": "Learn coding",
+      "slug": "learn-coding"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "79",
+      "name": "Learn photography",
+      "slug": "learn-photography"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "80",
+      "name": "Drama/ Theatre",
+      "slug": "drama-theatre"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "81",
+      "name": "Special needs schools",
+      "slug": "special-needs-schools"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "82",
+      "name": "Free events",
+      "slug": "free-events"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "83",
+      "name": "Free festivals",
+      "slug": "free-festivals"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "84",
+      "name": "Paid workshops",
+      "slug": "paid-workshops"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "85",
+      "name": "Paid events- music, drama, sports",
+      "slug": "paid-events-music-drama-sports"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "86",
+      "name": "Kids' Exhibitions",
+      "slug": "kids-exhibitions"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "87",
+      "name": "Baby fairs",
+      "slug": "baby-fairs"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "88",
+      "name": "Holiday Camps",
+      "slug": "holiday-camps"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "89",
+      "name": "Parenting workshops",
+      "slug": "parenting-workshops"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "90",
+      "name": "Talks",
+      "slug": "talks"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "91",
+      "name": "Seminars",
+      "slug": "seminars"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "92",
+      "name": "Places to donate old clothes and toys",
+      "slug": "places-to-donate-old-clothes-and-toys"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "93",
+      "name": "Top charities & social enterprises",
+      "slug": "top-charities-social-enterprises"
+    }
+  },
+  {
+    "model": "company_detail.SubCategoryModel",
+    "fields": {
+      "id": "94",
+      "name": "Top volunteering opportunities",
+      "slug": "top-volunteering-opportunities"
+    }
+  },
+  {
+    "model": "company_detail.CategoryModel",
+    "fields": {
+      "id": "1",
+      "name": "Child Health",
+      "slug": "child-health",
+      "sub_categories": [1,2,3,4,5,6,7,8,9,10,11,12]
+    }
+  },
+  {
+    "model": "company_detail.CategoryModel",
+    "fields": {
+      "id": "2",
+      "name": "Pregnancy",
+      "slug": "pregnancy",
+      "sub_categories": [14,15,16,17,18,19,20,21,22]
+    }
+  },
+  {
+    "model": "company_detail.CategoryModel",
+    "fields": {
+      "id": "3",
+      "name": "Post Natal Care",
+      "slug": "post-natal-care",
+      "sub_categories": [23,24,25,26,27]
+    }
+  },
+  {
+    "model": "company_detail.CategoryModel",
+    "fields": {
+      "id": "4",
+      "name": "Get Set Baby",
+      "slug": "get-set-baby",
+      "sub_categories":[28,29,30,31,32,33,34,35,36,37,38,39,40]
+    }
+  },
+  {
+    "model": "company_detail.CategoryModel",
+    "fields": {
+      "id": "5",
+      "name": "Out & About",
+      "slug": "out-about",
+      "sub_categories": [41,42,43,44,45,46,47,48,49]
+    }
+  },
+  {
+    "model": "company_detail.CategoryModel",
+    "fields": {
+      "id": "6",
+      "name": "Celebrate",
+      "slug": "celebrate",
+      "sub_categories":[50,51,52,53,54,55,56]
+    }
+  },
+  {
+    "model": "company_detail.CategoryModel",
+    "fields": {
+      "id": "7",
+      "name": "Hobby & Activity",
+      "slug": "hobby-activity",
+      "sub_categories":[57,59,60,61,62,63,64,65,66,67,68,69]
+    }
+  },
+  {
+    "model": "company_detail.CategoryModel",
+    "fields": {
+      "id": "8",
+      "name": "Learn",
+      "slug": "learn",
+      "sub_categories":[70,71,72,73,74,75,76,77,78,79,80,81]
+    }
+  },
+  {
+    "model": "company_detail.CategoryModel",
+    "fields": {
+      "id": "9",
+      "name": "Events & Fests",
+      "slug": "events-fests",
+      "sub_categories":[82,83,84,85,86,87,88,89,90,91]
+    }
+  },
+  {
+    "model": "company_detail.CategoryModel",
+    "fields": {
+      "id": "10",
+      "name": "Community",
+      "slug": "community",
+      "sub_categories": [92,93,94]
+    }
+  }
+
+]

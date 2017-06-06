@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <title>Socialweaver</title>
+    {%include 'css.html'%}
+</head>
+
+<body>
+    {% load static%}
+    <ul id="slide-out" class="side-nav fixed">
+        <li>
+            <div class="userView">
+                <div class="background">
+                    <img id="banner_image" src="{% static 'img/home_page_banner.png' %}">
+                </div>
+                <a href="{% url 'company:dashboard' %}"><img class="circle" src="{{user.profilemodel.profile_pic.url}}"></a>
+                <a href="{% url 'company:dashboard' %}"><span class="white-text name">
+                {{user.profilemodel.full_name|capfirst}}</span></a>
+                <a href="{% url 'company:dashboard' %}"><span class="white-text company_name">
+                {{user.companymodel.name|capfirst}}</span>
+                </a>
+            </div>
+        </li>
+        <li class="{% if request.resolver_match.view_name == 'company:package' or request.resolver_match.view_name == 'company:event' %}active{% endif %}"><a href="{% url 'company:package' %}"><i class="material-icons">store</i>Packages & Events</a></li>
+        <li class="{% if request.resolver_match.view_name == 'company:company_profile' %}active{% endif %}"><a href="{% url 'company:company_profile' %}"><i class="material-icons">perm_identity</i>Profile</a></li>
+        <li class="{% if request.resolver_match.view_name == 'company:calendar' %}active{% endif %}"><a href="{% url 'company:calendar' %}"><i class="material-icons">aspect_ratio</i>Calender</a></li>
+        <li class="{% if request.resolver_match.view_name == 'company:question' %}active{% endif %}"><a href="{% url 'company:question' %}"><i class="material-icons">receipt</i>Question/Answer</a></li>
+        <li><a href="#!"><i class="material-icons">view_list</i>Review/Rating</a></li>
+        <li><a href="#supportmodal"><i class="material-icons">call</i>Support</a></li>
+        <li><a href="{% url 'account_logout' %}"><i class="material-icons">lock_open</i>Logout</a></li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i>
+    </a>
+    <div id="supportmodal" class="modal bottom-sheet">
+        <div class="modal-content">
+            <h2>Support Modal</h2>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+    <div class="container">
+        {% include 'message.html'%} {%block content%} {%endblock%}
+    </div>
+</body>
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    $(".button-collapse").sideNav();
+    $('.modal').modal();
+});
+</script>
+{% endblock %}
+</html>
