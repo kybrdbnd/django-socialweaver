@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import (ProfileModel, CompanyModel, CategoryModel,
-                     PackageModel, EventModel, ImageModel, ParentModel,
+                     PackageModel, WishlistModel, EventModel, ImageModel, ParentModel,
                      QuestionModel, AnswerModel, ReviewModel)
 from .forms import (CompanyForm, CompanyUpdateForm, CompanySocialForm,
                     CompanyImageForm, ProfileForm, CompanyHighlightForm,
@@ -333,4 +333,30 @@ def like(request):
         'dislikes_success': dislikes_success,
         'user_redirect': user_redirect
     }
+    return HttpResponse(json.dumps(context), content_type='application/json')
+
+
+def wishlist_create(request):
+    user = request.user
+    context = {}
+    if user.is_authenticated():
+        package_id = request.POST.get('package_id', None)
+        package = PackageModel.objects.get(id=package_id)
+        wishlist_instance = WishlistModel.objects.filter(created_by=user,
+                                                         created_for=package)
+        if wishlist_instance:
+            context['wishlist_removed'] = True
+            wishlist_instance.delete()
+        else:
+            instance = WishlistModel()
+            instance.created_for = package
+            instance.created_by = user
+            instance.save()
+            context = {
+                'redirect_user': False,
+                'wishlist_success': True
+            }
+    else:
+        messages.info(request, "Please Login to Continue!!!")
+        context['redirect_user'] = True
     return HttpResponse(json.dumps(context), content_type='application/json')

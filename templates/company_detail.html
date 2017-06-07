@@ -91,6 +91,7 @@
         <div class="col s12 m6">
             <div class="card">
                 <div class="card-image">
+                    <a href="#" onclick="addToWishlist('{{package.id}}')"><i class="material-icons">grade</i></a>
                     <img src="{{package.image.url}}">
                     <span class="card-title">{{package.name}}</span>
                 </div>
@@ -163,8 +164,7 @@
                     <input type="hidden" name="next" value="{{ request.path }}">
                     <div class="file-field input-field col m6">
                         <div class="btn">
-                            <span>Upload Review Image</span>
-                            {{Reviewform.image}}
+                            <span>Upload Review Image</span> {{Reviewform.image}}
                         </div>
                     </div>
                 </div>
@@ -214,7 +214,7 @@ $(document).ready(function() {
 });
 
 function addVote(work, company_id) {
-    console.log(work, company_id)
+    // console.log(work, company_id)
     $.ajax({
         type: 'POST',
         url: "{% url 'like' %}",
@@ -235,6 +235,31 @@ function addVote(work, company_id) {
             }
             if (response.dislikes_success) {
                 Materialize.toast('Dislike Added!!', 4000, 'rounded')
+            }
+        }
+    })
+
+}
+
+function addToWishlist(package_id) {
+    // console.log(package_id)
+    $.ajax({
+        type: 'POST',
+        url: "{% url 'company:wishlist_create' %}",
+        data: {
+            'package_id': package_id,
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+        },
+        dataType: "json",
+        success: function(response) {
+            if (response.redirect_user) {
+                location.href = '/accounts/login/'
+            }
+            if (response.wishlist_success) {
+                Materialize.toast('Package Added To Wishlist!!', 4000, 'rounded')
+            }
+            if (response.wishlist_removed) {
+                Materialize.toast('Package Removed From Wishlist!!', 4000, 'rounded')
             }
         }
     })
