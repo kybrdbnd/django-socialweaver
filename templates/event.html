@@ -1,6 +1,6 @@
 {% extends 'vendor_base.html'%} {%load static%} {%block content%}
 <style>
-#eventmodal{
+#eventmodal {
     width: 901px;
     min-height: 580px;
     top: 4% !important;
@@ -27,6 +27,10 @@
                         <div class="card-content">
                             <p>{{event.description}}</p>
                         </div>
+                        <div class="card-action">
+                            <a href="{% url 'company:event_edit' event.id %}">Edit</a>
+                            <a href="#">Delete</a>
+                        </div>
                     </div>
                 </div>
                 {%endfor%}
@@ -52,6 +56,17 @@
                         {{Eventform.price}} {{Eventform.price.label_tag}}
                     </div>
                     <div class="clearfix"></div>
+                    <div class="input-field col m6">
+                        <input type="date" name="date" class="datepicker" required="true">
+                        <label for="date">Date</label>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="input-field col m6">
+                        <input placeholder="Start Time" id="timepicker" class="timepicker" name="start_time" type="time" required="true">
+                    </div>
+                    <div class="input-field col m6">
+                        <input id="timepicker" placeholder="End Time" class="timepicker" name="end_time" type="time" required="true">
+                    </div>
                     <div class="col m12">
                         <label for="serves_to">Serves To:</label>
                     </div>
@@ -95,6 +110,15 @@ $(document).ready(function() {
     $('.modal').modal();
     $('select').material_select();
     $('#id_image').removeAttr('required');
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+    $('.timepicker').pickatime({
+        autoclose: false,
+        twelvehour: false,
+        default: 'now'
+    });
 });
 </script>
 {%endblock%}

@@ -160,6 +160,7 @@ class EventModel(models.Model):
                                    blank=True,
                                    max_length=4)
     is_trial = models.BooleanField(default=False)
+    date = models.DateField(blank=True, null=True)
     start_time = models.TimeField(blank=True, null=True)
     end_time = models.TimeField(blank=True, null=True)
     company = models.ForeignKey(CompanyModel)

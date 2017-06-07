@@ -2,7 +2,7 @@ from django.conf.urls import url
 from .views import (home, dashboard, landing_step, package, event,
                     company_profile, calendar, profile_pic, company_detail,
                     question_detail, review_create, wishlist_create,
-                    review_like, package_edit)
+                    review_like, package_edit, event_edit)
 
 urlpatterns = [
     url(r'^$', home, name="home"),
@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^dashboard/', dashboard, name="dashboard"),
     url(r'^package/edit/(?P<id>\d+)$', package_edit, name="package_edit"),
     url(r'^package/', package, name="package"),
+    url(r'^event/edit/(?P<id>\d+)$', event_edit, name="event_edit"),
     url(r'^event/', event, name="event"),
     url(r'^profile/', company_profile, name="company_profile"),
     url(r'^calendar/', calendar, name="calendar"),

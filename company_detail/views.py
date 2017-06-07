@@ -124,6 +124,23 @@ def event(request):
     return render(request, 'event.html', context)
 
 
+def event_edit(request, id):
+    instance = get_object_or_404(EventModel, id=id)
+    if request.method == 'POST':
+        form = EventForm(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Event Updated Successfully')
+            return redirect('company:event')
+    else:
+        form = PackageForm(instance=instance)
+    context = {
+        'event': instance,
+        'form': form
+    }
+    return render(request, 'event_edit.html', context)
+
+
 def company_profile(request):
     vendor = User.objects.get(id=request.user.id)
     company = CompanyModel.objects.get(owner=vendor)

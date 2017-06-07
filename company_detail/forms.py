@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import FileInput, Textarea
+from django.forms import FileInput, Textarea, DateInput, TimeInput
 from .models import (ProfileModel, CategoryModel,
                      CompanyModel, ImageModel, PackageModel, EventModel,
                      ParentModel, QuestionModel, ReviewModel)
@@ -58,7 +58,13 @@ class EventForm(forms.ModelForm):
     class Meta:
         model = EventModel
         fields = ('name', 'description', 'price', 'serves_type',
-                  'is_child', 'is_parent', 'is_adult', 'image')
+                  'is_child', 'is_parent', 'is_adult', 'image',
+                  'date', 'start_time', 'end_time')
+        widgets = {
+            'date': DateInput(),
+            'start_time': TimeInput(),
+            'end_time': TimeInput()
+        }
     SUBSCRIPTION = 'sub'
     SESSION = 'sess'
     SERVES_TYPE_CHOICES = (
