@@ -360,3 +360,20 @@ def wishlist_create(request):
         messages.info(request, "Please Login to Continue!!!")
         context['redirect_user'] = True
     return HttpResponse(json.dumps(context), content_type='application/json')
+
+
+def review_like(request):
+    user = request.user
+    context = {}
+    if user.is_authenticated():
+        review_id = request.POST.get('review_id')
+        review = ReviewModel.objects.get(id=review_id)
+        if review.likes.filter(id=user.id).exists():
+            review.likes.remove(user)
+        else:
+            context['review_success'] = True
+            review.likes.add(user)
+    else:
+        messages.info(request, "Please Login to Continue!!!")
+        context['redirect_user'] = True
+    return HttpResponse(json.dumps(context), content_type='application/json')

@@ -203,6 +203,7 @@ class ReviewModel(models.Model):
                               default='package/no-image.png')
     given_by = models.ForeignKey(User)
     given_for = models.ForeignKey(CompanyModel)
+    likes = models.ManyToManyField(User, related_name='review_likes')
 
     def __str__(self):
         return self.title
