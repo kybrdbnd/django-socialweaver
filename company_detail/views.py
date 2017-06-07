@@ -5,10 +5,11 @@ from .models import (ProfileModel, CompanyModel, CategoryModel,
 from .forms import (CompanyForm, CompanyUpdateForm, CompanySocialForm,
                     CompanyImageForm, ProfileForm, CompanyHighlightForm,
                     PackageForm, EventForm, GoogleCalendarEventForm,
-                    CustomerLandingForm, QuestionForm, AnswerForm)
+                    CustomerLandingForm, QuestionForm, AnswerForm, ReviewForm)
 from django.contrib.auth.models import User
 from django.contrib import messages
 from slugify import slugify
+from django.contrib.auth.decorators import login_required
 import json
 from django.http import HttpResponse
 
@@ -245,6 +246,7 @@ def company_detail(request, slug):
     question_answers = QuestionModel.objects.filter(asked_for=company)
     reviews = ReviewModel.objects.filter(given_for=company)
     Questionform = QuestionForm()
+    Reviewform = ReviewForm()
     context = {
         'company': company,
         'company_images': company_images,
@@ -252,6 +254,7 @@ def company_detail(request, slug):
         'question_answers': question_answers,
         'reviews': reviews,
         'Questionform': Questionform,
+        'Reviewform': Reviewform
 
     }
     return render(request, 'company_detail.html', context)
@@ -271,8 +274,23 @@ def question_create(request):
                 instance.save()
     else:
         messages.info(request, "Login to ask Question")
-        return redirect('/accounts/login')
+        return redirect('/accounts/login/')
     return redirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def review_create(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            company_id = form.cleaned_data.get('company_id')
+            company = get_object_or_404(CompanyModel, id=company_id)
+            instance = form.save(commit=False)
+            instance.given_by = request.user
+            instance.given_for = company
+            messages.success(request, "Review Created Successfully")
+            instance.save()
+    return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
 def like(request):

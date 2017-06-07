@@ -1,8 +1,8 @@
 from django import forms
-from django.forms import FileInput
+from django.forms import FileInput, Textarea
 from .models import (ProfileModel, CategoryModel,
                      CompanyModel, ImageModel, PackageModel, EventModel,
-                     ParentModel, QuestionModel, AnswerModel)
+                     ParentModel, QuestionModel, ReviewModel)
 import re
 
 
@@ -174,3 +174,14 @@ class QuestionForm(forms.ModelForm):
 class AnswerForm(forms.Form):
     answer = forms.CharField(max_length=100, label="Enter Your Answer")
     question_id = forms.CharField(widget=forms.HiddenInput())
+
+
+class ReviewForm(forms.ModelForm):
+    company_id = forms.CharField(widget=forms.HiddenInput())
+
+    class Meta:
+        model = ReviewModel
+        fields = ('title', 'content', 'image')
+        widgets = {
+            'content': Textarea(attrs={'class': 'materialize-textarea'})
+        }

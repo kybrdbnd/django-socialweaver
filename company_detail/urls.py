@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from .views import (home, dashboard, landing_step, package, event,
                     company_profile, calendar, profile_pic, company_detail,
-                    question_detail)
+                    question_detail, review_create)
 
 urlpatterns = [
     url(r'^$', home, name="home"),
@@ -13,7 +13,9 @@ urlpatterns = [
     url(r'calendar/', calendar, name="calendar"),
     url(r'profile_pic/', profile_pic),
     url(r'question/', question_detail, name="question"),
+    url(r'^review/', review_create, name='review_create'),
     url(r'^(?P<slug>[-\w]+)/$', company_detail, name='company_detail'),
+
 
 
 

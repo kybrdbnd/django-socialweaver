@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import (CompanyModel, CategoryModel, SubCategoryModel,
-                     ProfileModel, PackageModel, EventModel, ImageModel,
+                     ProfileModel, PackageModel, WishlistModel,
+                     EventModel, ImageModel,
                      QuestionModel, AnswerModel, ReviewModel, ParentModel)
 from image_cropping import ImageCroppingMixin
 # Register your models here.
@@ -69,6 +70,16 @@ class ReviewAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at')
 
 
+class WishlistAdmin(admin.ModelAdmin):
+    list_display = ('get_package', 'get_user', 'created_at')
+
+    def get_package(self, obj):
+        return obj.created_for.name
+
+    def get_user(self, obj):
+        return obj.created_by.get_full_name()
+
+
 class ImageAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_display = ('image', 'company')
 
@@ -82,5 +93,6 @@ admin.site.register(CompanyModel, CompanyAdmin)
 admin.site.register(SubCategoryModel, SubCategoryAdmin)
 admin.site.register(CategoryModel, CategoryAdmin)
 admin.site.register(PackageModel, PackageAdmin)
+admin.site.register(WishlistModel, WishlistAdmin)
 admin.site.register(EventModel, EventAdmin)
 admin.site.register(ImageModel, ImageAdmin)

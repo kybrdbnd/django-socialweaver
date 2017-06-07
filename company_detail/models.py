@@ -131,6 +131,15 @@ class PackageModel(models.Model):
         return self.name
 
 
+class WishlistModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    created_for = models.ForeignKey(PackageModel)
+    created_by = models.ForeignKey(User)
+
+    def __str__(self):
+        return self.created_for.name
+
+
 class EventModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     name = models.CharField(max_length=100)
