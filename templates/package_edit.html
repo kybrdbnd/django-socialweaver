@@ -1,0 +1,63 @@
+{% extends 'vendor_base.html' %} {% block content %}
+<div class="container">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="input-field col m6">
+                {{form.name}} {{form.name.label_tag}}
+            </div>
+            <div class="col m6">
+                <img id="package_id" src="{{package.image.url}}">
+            </div>
+            <div class="input-field col m12">
+                {{form.description}} {{form.description.label_tag}}
+            </div>
+            <div class="input-field col m6">
+                {{form.price}} {{form.price.label_tag}}
+            </div>
+            <div class="clearfix"></div>
+            <div class="col m12">
+                <label for="serves_to">Serves To:</label>
+            </div>
+            <div class="input-field col m4">
+                {{form.is_child}} {{form.is_child.label_tag}}
+            </div>
+            <div class="input-field col m4">
+                {{form.is_parent}} {{form.is_parent.label_tag}}
+            </div>
+            <div class="input-field col m4">
+                {{form.is_adult}} {{form.is_adult.label_tag}}
+            </div>
+            <div class="input-field col m12">
+                <label for="serve_type">Serve Type:</label>
+                <br> {% for serve in form.serves_type%} {{ serve.tag }}
+                <label for="{{ serve.id_for_label }}">
+                    {{ serve.choice_label }}
+                </label>
+                {%endfor%}
+            </div>
+            <div class="clearfix"></div>
+            <div class="file-field input-field">
+                <div class="file-field input-field col m6">
+                    <div class="btn">
+                        <span>Upload Image</span>
+                        <input type='file' name='image' id='id_image' onchange="Imagethumb(this)">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button href="#!" class="modal-action waves-effect waves-green btn-flat">Agree
+        </button>
+    </form>
+</div>
+{% endblock %} {% block extra_js%}
+<script>
+function Imagethumb(input) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        $('#package_id').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+}
+</script>
+{% endblock%}

@@ -86,6 +86,23 @@ def package(request):
     return render(request, 'package.html', context)
 
 
+def package_edit(request, id):
+    instance = get_object_or_404(PackageModel, id=id)
+    if request.method == 'POST':
+        form = PackageForm(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Package Updated Successfully')
+            return redirect('company:package')
+    else:
+        form = PackageForm(instance=instance)
+    context = {
+        'package': instance,
+        'form': form
+    }
+    return render(request, 'package_edit.html', context)
+
+
 def event(request):
     vendor = User.objects.get(id=request.user.id)
     events = EventModel.objects.filter(company=vendor.companymodel)

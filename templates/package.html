@@ -1,6 +1,6 @@
 {% extends 'vendor_base.html'%} {%load static%} {%block content%}
 <style>
-#packagemodal{
+#packagemodal {
     width: 901px;
     min-height: 580px;
     top: 4% !important;
@@ -26,6 +26,10 @@
                         </div>
                         <div class="card-content">
                             <p>{{package.description}}</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="{% url 'company:package_edit' package.id %}">Edit</a>
+                            <a href="#">Delete</a>
                         </div>
                     </div>
                 </div>
