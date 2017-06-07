@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import (ProfileModel, CompanyModel, CategoryModel,
-                     PackageModel, WishlistModel, EventModel, ImageModel, ParentModel,
-                     QuestionModel, AnswerModel, ReviewModel)
+                     PackageModel, WishlistModel, EventModel, ImageModel,
+                     ParentModel, QuestionModel, AnswerModel, ReviewModel)
 from .forms import (CompanyForm, CompanyUpdateForm, CompanySocialForm,
                     CompanyImageForm, ProfileForm, CompanyHighlightForm,
                     PackageForm, EventForm, GoogleCalendarEventForm,
@@ -11,13 +11,15 @@ from django.contrib import messages
 from slugify import slugify
 from django.contrib.auth.decorators import login_required
 import json
+import datetime
 from django.http import HttpResponse
 
 
 def home(request):
     singapore_best_companies = []
     showcase_companies = CompanyModel.objects.all()[:4]
-    upcoming_events = []
+    upcoming_events = EventModel.objects.filter(
+        date__gte=datetime.date.today())
     context = {
         'showcase_companies': showcase_companies,
         'singapore_best_companies': singapore_best_companies,
@@ -133,7 +135,7 @@ def event_edit(request, id):
             messages.success(request, 'Event Updated Successfully')
             return redirect('company:event')
     else:
-        form = PackageForm(instance=instance)
+        form = EventForm(instance=instance)
     context = {
         'event': instance,
         'form': form
@@ -394,6 +396,25 @@ def wishlist_create(request):
         messages.info(request, "Please Login to Continue!!!")
         context['redirect_user'] = True
     return HttpResponse(json.dumps(context), content_type='application/json')
+
+
+def review_detail(request):
+    company = get_object_or_404(CompanyModel, owner=request.user)
+    reviews = ReviewModel.objects.filter(given_for=company)
+    max_val = 100
+    min_val = 0
+    likes_count = company.total_likes()
+    dislikes_count = company.total_dislikes()
+    likes_width = ((likes_count - min_val) / (max_val - min_val)) * 100
+    dislikes_width = ((dislikes_count - min_val) / (max_val - min_val)) * 100
+    context = {
+        'reviews': reviews,
+        'likes_count': likes_count,
+        'dislikes_count': dislikes_count,
+        'likes_width': likes_width,
+        'dislikes_width': dislikes_width
+    }
+    return render(request, 'review.html', context)
 
 
 def review_like(request):

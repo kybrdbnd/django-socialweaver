@@ -25,7 +25,7 @@
         <li class="{% if request.resolver_match.view_name == 'company:company_profile' %}active{% endif %}"><a href="{% url 'company:company_profile' %}"><i class="material-icons">perm_identity</i>Profile</a></li>
         <li class="{% if request.resolver_match.view_name == 'company:calendar' %}active{% endif %}"><a href="{% url 'company:calendar' %}"><i class="material-icons">aspect_ratio</i>Calender</a></li>
         <li class="{% if request.resolver_match.view_name == 'company:question' %}active{% endif %}"><a href="{% url 'company:question' %}"><i class="material-icons">receipt</i>Question/Answer</a></li>
-        <li><a href="#!"><i class="material-icons">view_list</i>Review/Rating</a></li>
+        <li class="{% if request.resolver_match.view_name == 'company:review' %}active{% endif %}"><a href="{% url 'company:review' %}"><i class="material-icons">view_list</i>Review/Rating</a></li>
         <li><a href="#supportmodal"><i class="material-icons">call</i>Support</a></li>
         <li><a href="{% url 'account_logout' %}"><i class="material-icons">lock_open</i>Logout</a></li>
     </ul>

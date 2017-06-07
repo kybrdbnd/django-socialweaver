@@ -1,0 +1,43 @@
+{% extends 'vendor_base.html'%} {% block content %}
+<div class="container">
+    <h5>Recommendations</h5>
+    <div>
+        <span><i class="material-icons">thumb_up</i>&nbsp; Likes &nbsp; {{likes_count}}</span>
+        <div class="progress">
+            <div class="determinate black" style="width: {{likes_width}}%"></div>
+        </div>
+    </div>
+    <div>
+        <span><i class="material-icons">thumb_down</i>&nbsp; Dislikes &nbsp; {{dislikes_count}}</span>
+        <div class="progress">
+            <div class="determinate red" style="width: {{dislikes_width}}%"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div>
+        <h5>Reviews</h5>
+        <ul class="collapsible popout" data-collapsible="accordion">
+            {% for review in reviews%}
+            <li>
+                <div class="collapsible-header">{{review.title}}
+                    <span>{{review.given_by.get_full_name}}, {{review.created_at}}</span>
+                </div>
+                <div class="collapsible-body">
+                    <div>
+                        {{review.content}}
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %} {% block extra_js%}
+<script>
+$(document).ready(function() {
+    $('.collapsible').collapsible('open', 0);
+    $('.modal').modal();
+});
+</script>
+{% endblock%}
