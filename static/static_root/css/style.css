@@ -1,3 +1,12 @@
+.tabs .tab a.active {
+    color: #0d47a1 !important;
+}
+
+.tabs .tab a {
+    color: #1565c0 !important;
+}
+
+
 /*message*/
 
 .messages {
@@ -56,8 +65,11 @@
 
 /*package page*/
 
-./*package_image {
+.
+/*package_image {
     width: 50px;
 }
 */
+
+
 /*package page ends*/

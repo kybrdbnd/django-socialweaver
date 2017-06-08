@@ -1,3 +1,12 @@
+.tabs .tab a.active {
+    color: #0d47a1 !important;
+}
+
+.tabs .tab a {
+    color: #1565c0 !important;
+}
+
+
 /*message*/
 
 .tabs .indicator {
@@ -87,3 +96,16 @@
 
 
 /*package page ends*/
+
+.preloader-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

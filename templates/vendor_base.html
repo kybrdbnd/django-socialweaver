@@ -1,5 +1,5 @@
 <html>
-    {% load staticfiles%}
+{% load staticfiles%}
 
 <head>
     {%include 'css.html'%}
@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="container">
-        {% include 'message.html'%} {%block content%} {%endblock%}
+        {% include 'message.html'%} {% include 'preloader.html'%}{%block content%} {%endblock%}
     </div>
 </body>
 {% block extra_js %}
@@ -51,4 +51,5 @@ $(document).ready(function() {
 });
 </script>
 {% endblock %}
+
 </html>
