@@ -134,8 +134,8 @@ ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = LOGIN_REDIRECT_URL
 
-# if DEBUG:
-#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 THUMBNAIL_PROCESSORS = (
@@ -163,8 +163,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static", 'static_root')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static", "static_dir"),
 ]
-
-
-# sendgrid settings
-EMAIL_BACKEND = "sgbackend.SendGridBackend"
-SENDGRID_API_KEY = "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"
