@@ -1,0 +1,63 @@
+/*message*/
+
+.messages {
+    display: none;
+}
+
+.user_question_img {
+    display: inline-block;
+}
+
+
+/*message ends*/
+
+
+/*package model*/
+
+
+/*package model ends*/
+
+
+/*profile*/
+
+#banner_image {
+    width: 475px;
+    min-height: 185px;
+}
+
+
+/*profile ends*/
+
+
+/*main home page*/
+
+.company_image {
+    width: 212px;
+}
+
+
+/*main home page ends*/
+
+
+/*signin page*/
+
+#company_logo {
+    margin-top: 20px;
+}
+
+#login_title {
+    font-weight: 300;
+    font-size: 40px;
+}
+
+
+/*signin page ends*/
+
+
+/*package page*/
+
+./*package_image {
+    width: 50px;
+}
+*/
+/*package page ends*/

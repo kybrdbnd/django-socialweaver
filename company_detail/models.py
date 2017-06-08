@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
-from image_cropping import ImageRatioField
 from django.urls import reverse
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 # Create your models here.
 
 
@@ -15,6 +16,10 @@ class ProfileModel(models.Model):
     profile_pic = models.ImageField(upload_to='profile_pics',
                                     default='profile_pics/avatar.jpg',
                                     null=True)
+    profile_pic_thumbnail = ImageSpecField(source='profile_pic',
+                                           processors=[ResizeToFill(300, 200)],
+                                           format='JPEG',
+                                           options={'quality': 60})
     is_vendor = models.BooleanField(default=False)
 
     def __str__(self):
@@ -93,7 +98,10 @@ class CompanyModel(models.Model):
 
 class ImageModel(models.Model):
     image = models.ImageField(upload_to='photos/%Y/%m/%d', null=True)
-    cropping = ImageRatioField('image', '430x360')
+    image_thumbnail = ImageSpecField(source='image',
+                                     processors=[ResizeToFill(100, 50)],
+                                     format='JPEG',
+                                     options={'quality': 60})
     company = models.ForeignKey(CompanyModel, default=None)
 
     def __str__(self):
@@ -116,6 +124,10 @@ class PackageModel(models.Model):
     )
     image = models.ImageField(upload_to='package',
                               default='package/no-image.png')
+    image_thumbnail = ImageSpecField(source='image',
+                                     processors=[ResizeToFill(439, 278)],
+                                     format='JPEG',
+                                     options={'quality': 90})
     serves_type = models.CharField(choices=SERVES_TYPE_CHOICES,
                                    blank=True,
                                    max_length=4)
@@ -154,8 +166,12 @@ class EventModel(models.Model):
         (SUBSCRIPTION, 'Subscription'),
         (SESSION, 'Session'),
     )
-    image = models.ImageField(upload_to='package',
+    image = models.ImageField(upload_to='event',
                               default='package/no-image.png')
+    image_thumbnail = ImageSpecField(source='image',
+                                     processors=[ResizeToFill(439, 278)],
+                                     format='JPEG',
+                                     options={'quality': 60})
     serves_type = models.CharField(choices=SERVES_TYPE_CHOICES,
                                    blank=True,
                                    max_length=4)
@@ -202,6 +218,10 @@ class ReviewModel(models.Model):
     content = models.TextField()
     image = models.ImageField(upload_to='review',
                               default='package/no-image.png')
+    image_thumbnail = ImageSpecField(source='image',
+                                     processors=[ResizeToFill(439, 278)],
+                                     format='JPEG',
+                                     options={'quality': 60})
     given_by = models.ForeignKey(User)
     given_for = models.ForeignKey(CompanyModel)
     likes = models.ManyToManyField(User, related_name='review_likes')

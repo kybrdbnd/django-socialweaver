@@ -1,3 +1,10 @@
+#packagemodal {
+    width: 901px;
+    min-height: 580px;
+    top: 4% !important;
+}
+
+
 /*message*/
 
 .messages {
@@ -56,8 +63,11 @@
 
 /*package page*/
 
-.package_image {
+.
+/*package_image {
     width: 50px;
 }
+*/
+
 
 /*package page ends*/

@@ -1,17 +1,11 @@
-{% extends 'vendor_base.html'%} {%load static%} {%block content%}
-<style>
-#packagemodal {
-    width: 901px;
-    min-height: 580px;
-    top: 4% !important;
-}
-</style>
+packagemodal{% extends 'vendor_base.html'%} {%load staticfiles%} {%block content%}
 <div class="container">
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s3"><a class="active" href="#packages">Packages</a></li>
-                <li class="tab col s3"><a target="_self" href="{% url 'company:event' %}">Events</a></li>
+                <li class="tab col s3"><a class="active" href="#packages"><span class="blue-text text-darken-4">Packages
+                </span></a></li>
+                <li class="tab col s3"><a target="_self" href="{% url 'company:event' %}"><span class="blue-text">Events</span></a></li>
             </ul>
         </div>
         <div id="packages" class="col s12">
@@ -21,7 +15,7 @@
                 <div class="col s12 m6">
                     <div class="card">
                         <div class="card-image">
-                            <img class="package_image" src="{{package.image.url}}">
+                            <img class="package_image" src="{{package.image_thumbnail.url}}">
                             <span class="card-title">{{package.name}}</span>
                         </div>
                         <div class="card-content">
@@ -39,26 +33,42 @@
             <h2>No Packages Found</h2> {%endif%}
         </div>
     </div>
-    <a href="#packagemodal" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+    <div class="fixed-action-btn">
+        <a href="#packagemodal" class="btn-floating btn-large waves-effect waves-light blue darken-2"><i class="material-icons">add</i></a>
+    </div>
     <!-- Modal Structure -->
     <div id="packagemodal" class="modal">
         <div class="modal-content">
             <form action="{% url 'company:package' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token%}
                 <div class="row">
-                    <div class="input-field col m12">
-                        {{Packageform.name}} {{Packageform.name.label_tag}}
+                    <div class="col m6">
+                        <div class="input-field col m12">
+                            {{Packageform.name}} {{Packageform.name.label_tag}}
+                        </div>
+                        <div class="input-field col m12">
+                            {{Packageform.description}} {{Packageform.description.label_tag}}
+                        </div>
+                        <div class="input-field col m12">
+                            {{Packageform.price}} {{Packageform.price.label_tag}}
+                        </div>
                     </div>
-                    <div class="input-field col m12">
-                        {{Packageform.description}} {{Packageform.description.label_tag}}
-                    </div>
-                    <div class="input-field col m6">
-                        {{Packageform.price}} {{Packageform.price.label_tag}}
+                    <div class="col m6 center-align">
+                        <div class="col m12">
+                            <img id="package_image_preview" src="{% static 'img/no-image.png' %}" alt="">
+                        </div>
+                        <div class="file-field input-field col m12">
+                            <div class="btn blue darken-2 center-align">
+                                <span>Upload Package Image</span>
+                                <input type="file" name="image" onchange="Imagethumb(this)">
+                            </div>
+                        </div>
                     </div>
                     <div class="clearfix"></div>
-                    <div class="col m12">
-                        <label for="serves_to">Serves To:</label>
+                    <div class="input-field col m12">
+                        <label id="serve_to" for="serve_to">Serves To:</label>
                     </div>
+                    <br/>
                     <div class="input-field col m4">
                         {{Packageform.is_child}} {{Packageform.is_child.label_tag}}
                     </div>
@@ -69,31 +79,37 @@
                         {{Packageform.is_adult}} {{Packageform.is_adult.label_tag}}
                     </div>
                     <div class="input-field col m12">
-                        <label for="serve_type">Serve Type:</label>
-                        <br> {% for serve in Packageform.serves_type%} {{ serve.tag }}
-                        <label for="{{ serve.id_for_label }}">
+                        <label for="serve_type" id="serve_type">Serve Type:</label>
+                    </div>
+                    <br/> {% for serve in Packageform.serves_type%}
+                    <div class="input-field col m2">
+                        {{ serve.tag }}
+                        <label for="{{ serve.id_for_label }}" class="serve_cat">
                             {{ serve.choice_label }}
                         </label>
-                        {%endfor%}
                     </div>
+                    {%endfor%}
                     <div class="clearfix"></div>
-                    <div class="file-field input-field">
-                        <div class="btn">
-                            <span class="white-text">Images</span> {{Packageform.image}}
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" placeholder="Upload Package Image">
-                        </div>
-                    </div>
                 </div>
-                <button href="#!" class="modal-action waves-effect waves-green btn-flat">Agree
-                </button>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close modal-action waves-effect waves-green btn-flat">Cancel
+                    </a>
+                    <button href="#!" class="modal-action waves-effect waves-green btn-flat">Submit
+                    </button>
+                </div>
             </form>
         </div>
     </div>
 </div>
 {%endblock%} {% block extra_js%}
 <script>
+function Imagethumb(input) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        $('#package_image_preview').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+}
 $(document).ready(function() {
     $('ul.tabs').tabs();
     $('.modal').modal();

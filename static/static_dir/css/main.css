@@ -1,0 +1,89 @@
+/*message*/
+
+.tabs .indicator {
+    background-color: #1976d2 !important;
+}
+
+.messages {
+    display: none;
+}
+
+.user_question_img {
+    display: inline-block;
+}
+
+
+/*message ends*/
+
+
+/*package model*/
+
+
+/*package model ends*/
+
+
+/*profile*/
+
+#banner_image {
+    width: 475px;
+    min-height: 185px;
+}
+
+
+/*profile ends*/
+
+
+/*main home page*/
+
+.company_image {
+    width: 212px;
+}
+
+
+/*main home page ends*/
+
+
+/*signin page*/
+
+#company_logo {
+    margin-top: 20px;
+}
+
+#login_title {
+    font-weight: 300;
+    font-size: 40px;
+}
+
+
+/*signin page ends*/
+
+
+/*package page*/
+
+#serve_to {
+    top: -5px;
+}
+
+.serve_cat {
+    /*margin-bottom: 5px;*/
+}
+
+#eventmodal {
+    width: 901px;
+    min-height: 590px;
+    top: 4% !important;
+}
+
+#packagemodal {
+    width: 901px;
+    min-height: 580px;
+    top: 4% !important;
+}
+
+#package_image_preview {
+    width: 210px;
+    height: 150px;
+}
+
+
+/*package page ends*/

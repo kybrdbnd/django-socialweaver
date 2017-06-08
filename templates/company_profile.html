@@ -1,4 +1,4 @@
-{% extends 'vendor_base.html'%} {%load static%}{% load thumbnail %} {%block content%}
+{% extends 'vendor_base.html'%} {%load static%} {%block content%}
 <div class="container">
     <div class="row">
         <div class="col s12">
@@ -61,7 +61,7 @@
                 </button>
             </form>
             <img id="img_id" src="" alt="your image" /> {% if company_images%} {% for image in company_images%}
-            <img src="{% thumbnail image.image 430x360 box=image.cropping crop detail %}"> {%endfor%} {% endif %}
+            <img src="{{image.image_thumbnail.url}}"> {%endfor%} {% endif %}
         </div>
         <div id="profile" class="col s12">
             <form action="/company/profile_pic/" method='POST' enctype="multipart/form-data">
